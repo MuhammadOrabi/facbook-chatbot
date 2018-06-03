@@ -32,6 +32,7 @@ class ChatBotController extends Controller
                 $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages', [
                     'query' => ['access_token' => env('CHATPOT_PAGE_ACCESS_TOKEN')],
                     'json' => [
+                        'messaging_type' => 'Text',
                         'recipient' => ['id' => $sender],
                         'message' => $data
                     ]
