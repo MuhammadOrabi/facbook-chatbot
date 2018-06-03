@@ -12,7 +12,6 @@
 */
 
 Route::get('/', function () {
-    dd(session()->all());
     return view('welcome');
 });
 
