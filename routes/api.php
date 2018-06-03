@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/webhock', 'ChatBotController@get');
+Route::post('/webhock', 'ChatBotController@post');
