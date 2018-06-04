@@ -28,16 +28,16 @@ class ChatBotController extends Controller
             if ($event['message'] && $event['message']['text']) {
                 $data = ['text' => $event['message']['text']];
                 file_put_contents('postLog.txt', json_encode($event));
-                // $client = new \GuzzleHttp\Client();
-                // $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages', [
-                //     'query' => ['access_token' => env('CHATPOT_PAGE_ACCESS_TOKEN')],
-                //     'json' => [
-                //         'messaging_type' => 'Text',
-                //         'recipient' => ['id' => $sender],
-                //         'message' => $data
-                //     ]
-                // ]);
-                // file_put_contents('resLog.txt', json_encode($res));                
+                $client = new \GuzzleHttp\Client();
+                $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
+                $res = $client->request('POST', $url, [
+                    'json' => [
+                        'messaging_type' => 'Text',
+                        'recipient' => ['id' => $sender],
+                        'message' => $data
+                    ]
+                ]);
+                file_put_contents('resLog.txt', json_encode($res));                
             }
         }
         return response(200);
