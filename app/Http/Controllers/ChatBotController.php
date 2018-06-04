@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\Process\Process;
 
 class ChatBotController extends Controller
 {
@@ -28,18 +29,15 @@ class ChatBotController extends Controller
             if ($event['message'] && $event['message']['text']) {
                 $data = ['text' => $event['message']['text']];
                 file_put_contents('postLog.txt', json_encode($event));
+                $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
                 $messageData = [
                     'messaging_type' => 'Text',
                     'recipient' => ['id' => $sender],
                     'message' => $data
                 ];
-                $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . env("CHATPOT_PAGE_ACCESS_TOKEN"));
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_HEADER, false);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($messageData));
-                curl_exec($ch);
+                $builder = new Process(array(
+                    'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', $messageData, $url
+                ));
             }
         }
         return response(200);
