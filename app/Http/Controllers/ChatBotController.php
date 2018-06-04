@@ -23,10 +23,10 @@ class ChatBotController extends Controller
     public function post(Request $request)
     {
         $messaging_events = $request->all()['entry'][0]['messaging'];
+        file_put_contents('postLog.txt', json_encode($messaging_events));
         foreach ($messaging_events as $event) {
             $sender = $event['sender']['id'];
             if ($event['message'] && $event['message']['text']) {
-                file_put_contents('postLog.txt', json_encode($event));
                 $data = ['text' => $event['message']['text']];
                 // $client = new \GuzzleHttp\Client();
                 // $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages', [
