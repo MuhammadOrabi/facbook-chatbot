@@ -26,7 +26,6 @@ class ChatBotController extends Controller
         $messaging_events = $request->all()['entry'][0]['messaging'];
         foreach ($messaging_events as $event) {
             $sender = $event['sender']['id'];
-            file_put_contents('postLog.txt', $sender);            
             if ($event['message'] && $event['message']['text']) {
                 $data = ['text' => $event['message']['text']];
                 $client = new \GuzzleHttp\Client();
@@ -38,6 +37,7 @@ class ChatBotController extends Controller
                         'message' => $data
                     ]
                 ]);
+                file_put_contents('postLog.txt', $res->getStatusCode());            
             }
         }
         return response(200);
