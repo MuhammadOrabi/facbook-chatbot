@@ -22,10 +22,11 @@ class ChatBotController extends Controller
 
     public function post(Request $request)
     {
-        file_put_contents('postLog.txt', json_encode($request->all()));
+        // file_put_contents('postLog.txt', json_encode($request->all()));
         $messaging_events = $request->all()['entry'][0]['messaging'];
         foreach ($messaging_events as $event) {
             $sender = $event['sender']['id'];
+            file_put_contents('postLog.txt', $sender);            
             if ($event['message'] && $event['message']['text']) {
                 $data = ['text' => $event['message']['text']];
                 $client = new \GuzzleHttp\Client();
