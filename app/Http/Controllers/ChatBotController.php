@@ -40,6 +40,7 @@ class ChatBotController extends Controller
                 $builder = new Process(array(
                     'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', $messageData, $url
                 ));
+                $builder->run();
             }
         }
         return response(200);
