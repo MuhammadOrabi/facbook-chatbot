@@ -28,13 +28,15 @@ class ChatBotController extends Controller
             $sender = $event['sender']['id'];
             if ($event['message'] && $event['message']['text']) {
                 $data = ['text' => $event['message']['text']];
-                file_put_contents('postLog.txt', json_encode($event));
                 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
                 $messageData = [
                     'messaging_type' => 'Text',
                     'recipient' => ['id' => $sender],
                     'message' => $data
                 ];
+                file_put_contents('postLog.txt', json_encode(array(
+                    'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', $messageData, $url
+                )));
                 $builder = new Process(array(
                     'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', $messageData, $url
                 ));
