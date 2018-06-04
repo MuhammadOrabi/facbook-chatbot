@@ -28,7 +28,6 @@ class ChatBotController extends Controller
             $sender = $event['sender']['id'];
             if ($event['message'] && $event['message']['text']) {
                 $data = ['text' => $event['message']['text']];
-                file_put_contents('postLog.txt', $data);            
                 $client = new \GuzzleHttp\Client();
                 $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages', [
                     'query' => ['access_token' => env('CHATPOT_PAGE_ACCESS_TOKEN')],
@@ -38,6 +37,8 @@ class ChatBotController extends Controller
                         'message' => $data
                     ]
                 ]);
+            } else {
+                file_put_contents('postLog.txt', '$data');                            
             }
         }
         return response(200);
