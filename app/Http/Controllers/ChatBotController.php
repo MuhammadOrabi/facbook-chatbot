@@ -35,10 +35,10 @@ class ChatBotController extends Controller
                     'message' => $data
                 ];
                 file_put_contents('postLog.txt', json_encode(array(
-                    'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', $messageData, $url
+                    'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', "'$messageData'", $url
                 )));
                 $builder = new Process(array(
-                    'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', $messageData, $url
+                    'curl', '-X', 'POST', '-H', 'Content-Type: application/json', '-d', "'$messageData'", $url
                 ));
                 $builder->run();
             }
