@@ -35,7 +35,6 @@ class ChatBotController extends Controller
                     'Accept' => 'application/json',
                 ];
                 $messageData = [
-                        'messaging_type' => 'response',
                         'recipient' => ['id' => $sender],
                         'message' => $data
                 ];
