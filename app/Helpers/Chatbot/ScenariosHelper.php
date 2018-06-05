@@ -8,7 +8,7 @@ class ScenariosHelper
     {
         if (strpos($message, 'hello') !== false) {
             return ReplyHelper::text('Hey, How are you doing?');
-        } else if (strpos($message, 'web') !== false) {
+        } else if (strpos($message, 'webs') !== false) {
             return ReplyHelper::buttons('Surfe the web', [
                 ['type' => 'web_url', 'url' => 'https://google.com', 'title' => 'Google'],
                 ['type' => 'web_url', 'url' => 'https://facebook.com', 'title' => 'Facebook'],

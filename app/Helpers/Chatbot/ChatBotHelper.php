@@ -2,6 +2,8 @@
 
 namespace App\Helpers\Chatbot;
 
+use GuzzleHttp\Exception\ClientException;
+
 class ChatBotHelper
 {
     public static function handle($event)
@@ -29,8 +31,8 @@ class ChatBotHelper
                     'message' => $reply
                 ]
             ]);
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
-            echo $e->getResponse();
+        } catch (ClientException $e) {
+            // echo $e->getResponse();
         }
     }
 }
