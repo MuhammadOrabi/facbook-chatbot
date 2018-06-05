@@ -22,6 +22,7 @@ class ChatBotController extends Controller
 
     public function post(Request $request)
     {
+        echo "here";
         $messaging_events = $request->all()['entry'][0]['messaging'];
         foreach ($messaging_events as $event) {
             $sender = $event['sender']['id'];
