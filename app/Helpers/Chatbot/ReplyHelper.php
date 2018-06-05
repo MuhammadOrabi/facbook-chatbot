@@ -7,7 +7,7 @@ class ReplyHelper
 
     public static function handle($type, $title, $data)
     {
-        self::$type($title, $data);
+        return self::$type($title, $data);
     }
 
     public static function text($message)
