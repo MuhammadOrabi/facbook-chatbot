@@ -4,7 +4,7 @@ namespace App\Helpers\Chatbot;
 
 class ReplyHelper
 {
-    public static function text($sender, $message)
+    public static function text($message)
     {
         return [ 
             'text' => $message
