@@ -11,9 +11,18 @@ class ReplyHelper
         ];
     }
 
-    public static function buttons()
+    public static function buttons($title, $buttons)
     {
-        // 
+        return [
+            'attachment' => [
+                'type' => 'template',
+                'payload' => [
+                    'template_type' => 'button',
+                    'text' => $title,
+                    'buttons' => $buttons
+                ]
+            ]
+        ];
     }
 
     public static function image()
