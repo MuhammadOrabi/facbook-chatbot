@@ -29,7 +29,7 @@ class ChatBotController extends Controller
                 $data = ['text' => $event['message']['text']];
                 file_put_contents('postLog.txt', json_encode($event));
                 
-                $client = new \GuzzleHttp\Client();
+                // $client = new \GuzzleHttp\Client();
                 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
                 $headers = [
                     'Content-type' => 'application/json; charset=utf-8',
