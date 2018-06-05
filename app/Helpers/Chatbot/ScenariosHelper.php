@@ -17,7 +17,7 @@ class ScenariosHelper
 
             return ReplyHelper::handle('generic', 'Choose one of our departments', $departments);
         } else if (strpos($message, 'web') !== false) {
-            return ReplyHelper::generic();
+            return ReplyHelper::generic('This is a title', []);
         } else {
             return ReplyHelper::quickReply();
         }
