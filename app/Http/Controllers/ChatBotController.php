@@ -29,18 +29,24 @@ class ChatBotController extends Controller
                 $data = ['text' => $event['message']['text']];
                 file_put_contents('postLog.txt', json_encode($event));
                 
-                // $client = new \GuzzleHttp\Client();
-                // $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
-                // $headers = [
-                //     'Content-type' => 'application/json; charset=utf-8',
-                //     'Accept' => 'application/json',
-                // ];
-                // $messageData = [
-                //         'messaging_type' => 'Text',
-                //         'recipient' => ['id' => $sender],
-                //         'message' => $data
-                // ];
-                // $res = $client->post($url, $headers, json_encode($messageData))->send();
+                $client = new \GuzzleHttp\Client();
+                $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
+                $headers = [
+                    'Content-type' => 'application/json; charset=utf-8',
+                    'Accept' => 'application/json',
+                ];
+                $messageData = [
+                        'messaging_type' => 'response',
+                        'recipient' => ['id' => $sender],
+                        'message' => $data
+                ];
+                $promise = $client->postAsync($url, $headers, $body);
+                $promise->then(function (ResponseInterface $res) {
+                    file_put_contents('postLog.txt', $res->getStatusCode());                    
+                },
+                function (RequestException $e) {
+                    file_put_contents('postLog.txt', $e->getMessage());                                        
+                });
             }
         }
         return response(200);
