@@ -41,12 +41,12 @@ class ChatBotController extends Controller
                         'message' => $data
                 ];
                 $promise = $client->postAsync($url, $headers, $body);
-                $promise->then(function (ResponseInterface $res) {
-                    file_put_contents('postLog.txt', $res->getStatusCode());                    
-                },
-                function (RequestException $e) {
-                    file_put_contents('postLog.txt', $e->getMessage());                                        
-                });
+                // $promise->then(function (ResponseInterface $res) {
+                //     file_put_contents('postLog.txt', $res->getStatusCode());                    
+                // },
+                // function (RequestException $e) {
+                //     file_put_contents('postLog.txt', $e->getMessage());                                        
+                // });
             }
         }
         return response(200);
