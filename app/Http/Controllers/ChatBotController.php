@@ -39,7 +39,7 @@ class ChatBotController extends Controller
                         'recipient' => ['id' => $sender],
                         'message' => $data
                 ];
-                $promise = $client->postAsync($url, $headers, $body);
+                $promise = $client->post($url, $headers, $body);
                 // $promise->then(function (ResponseInterface $res) {
                 //     file_put_contents('postLog.txt', $res->getStatusCode());                    
                 // },
