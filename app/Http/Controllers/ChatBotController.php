@@ -23,7 +23,7 @@ class ChatBotController extends Controller
     public function post(Request $request)
     {
         // $messaging_events = $request->all()['entry'][0]['messaging'];
-        // file_put_contents('postLog.txt', json_decode($messaging_events));
+        file_put_contents('postLog.txt', json_decode($request->all()));
         return response(200);                   
     }
 
