@@ -27,7 +27,7 @@ class ChatBotController extends Controller
             $sender = $event['sender']['id'];
             if ($event['message'] && $event['message']['text']) {
                 $data = ['text' => $event['message']['text']];
-                file_put_contents('postLog.txt', json_encode($event));
+                file_put_contents('postLog.txt', json_decode($event));
                 
                 // $client = new \GuzzleHttp\Client();
                 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
