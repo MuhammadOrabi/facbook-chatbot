@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'https://graph.facebook.com/v2.6/me/messages'
+        // 
     ];
 }
