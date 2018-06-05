@@ -29,7 +29,8 @@ class ChatBotController extends Controller
                 $data = ['text' => $event['message']['text']];
                 
                 $client = new \GuzzleHttp\Client();
-                $url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' . env('CHATPOT_PAGE_ACCESS_TOKEN');
+                $url = 'https://graph.facebook.com/v2.6/me/messages?=';
+
                 $headers = [
                     'Content-type' => 'application/json; charset=utf-8',
                     'Accept' => 'application/json',
@@ -38,13 +39,11 @@ class ChatBotController extends Controller
                         'recipient' => ['id' => $sender],
                         'message' => $data
                 ];
-                $promise = $client->post($url, $headers, $body);
-                // $promise->then(function (ResponseInterface $res) {
-                //     file_put_contents('postLog.txt', $res->getStatusCode());                    
-                // },
-                // function (RequestException $e) {
-                //     file_put_contents('postLog.txt', $e->getMessage());                                        
-                // });
+                $client->request('POST', $url, [
+                    'query' => ['access_token' => env('CHATPOT_PAGE_ACCESS_TOKEN')],
+                    'headers' => $headers,
+                    'json' => $messageData
+                ]);
             }
         }
         return response(200);
