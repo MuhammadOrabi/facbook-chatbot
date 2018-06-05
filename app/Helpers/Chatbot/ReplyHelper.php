@@ -26,10 +26,10 @@ class ReplyHelper
                 "item_url" => 'https://www.qarenhom.com/en/' . $item['title'], 
                 "image_url" => "https://www.cloudways.com/blog/wp-content/uploads/Migrating-Your-Symfony-Website-To-Cloudways-Banner.jpg",         
             ];
-            $elm['buttons'][] = $item['sections']->map(function ($section, $key, $item) {
+            $elm['buttons'][] = $item['sections']->map(function ($section, $key) {
                 return [
                     "type" => "web_url", 
-                    "url" => 'https://www.qarenhom.com/en/' . $item . '/' . $section['title'], 
+                    "url" => 'https://www.qarenhom.com/en/' . $section['title'] . '/' . $section['title'], 
                     "title" => $section['title']
                 ];
             });
