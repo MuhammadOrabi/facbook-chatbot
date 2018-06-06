@@ -75,6 +75,7 @@ class ReplyHelper
             ]
           ];
         }
+        return $elements;
     }
 
     public static function list($data)
