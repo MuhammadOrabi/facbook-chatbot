@@ -51,7 +51,7 @@ class ScenariosHelper
         } else if (strpos($message, 'web') !== false) {
             return ReplyHelper::text('This is a title');
         } else {
-            return ReplyHelper::quickReply();
+            // return ReplyHelper::quickReply();
         }
     }
 }
