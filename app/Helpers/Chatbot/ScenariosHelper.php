@@ -49,7 +49,7 @@ class ScenariosHelper
 
             return ReplyHelper::handle('generic', $data);
         } else if (strpos($message, 'web') !== false) {
-            return ReplyHelper::text('This is a title');
+            return ReplyHelper::handle('text', 'This is a title');
         } else {
             // return ReplyHelper::quickReply();
         }
