@@ -85,7 +85,49 @@ class ReplyHelper
                 "type" => "template", 
                 "payload" => [
                     "template_type" => "list",
-                    "elements" => $elements
+                     "elements"=>[
+            [
+            "title"=>"Migrate symfony from cpanel",
+            "item_url"=>"https://www.cloudways.com/blog/migrate-symfony-from-cpanel-to-cloud-hosting/",
+            "image_url"=>"https://www.cloudways.com/blog/wp-content/uploads/Migrating-Your-Symfony-Website-To-Cloudways-Banner.jpg",
+            "subtitle"=>"We've got the right hat for everyone.",
+            "buttons"=>[
+              [
+                "type"=>"web_url",
+                "url"=>"https://cloudways.com",
+                "title"=>"View Website"
+              ],
+            ]
+          ],
+            [
+            "title"=>"Multipurpose Theme Design and Versatility",
+            "item_url"=>"https://www.cloudways.com/blog/multipurpose-wordpress-theme-for-agency/",
+            "image_url"=>"https://www.cloudways.com/blog/wp-content/uploads/How-a-multipurpose-WordPress-theme-can-help-your-agency-Banner.jpg",
+            "subtitle"=>"We've got the right theme for everyone.",
+            "buttons"=>[
+              [
+                "type"=>"web_url",
+                "url"=>"https://cloudways.com",
+                "title"=>"View Website"
+              ],
+            ]
+          ],
+            [
+            "title"=>"Add Custom Discount in Magento 2",
+            "item_url"=>"https://www.cloudways.com/blog/add-custom-discount-magento-2/",
+            "image_url"=>"https://www.cloudways.com/blog/wp-content/uploads/M2-Custom-Discount-Banner.jpg",
+            "subtitle"=>"Learn adding magento 2 custom discounts.",
+            "buttons"=>[
+              [
+                "type"=>"web_url",
+                "url"=>"https://cloudways.com",
+                "title"=>"View Website"
+              ],
+            ]
+          ]
+        ]
+      
+
                 ]
             ]
         ];

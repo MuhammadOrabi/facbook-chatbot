@@ -50,8 +50,8 @@ class ScenariosHelper
             return ReplyHelper::handle('text', 'This is a title');
         } else if (strpos($message, 'generic') !== false) {
             return ReplyHelper::handle('generic', $data);
-        } else {
-            // return ReplyHelper::quickReply();
+        } else if ($data->firstWhere('title', $message)){
+            return ReplyHelper::handle('list', $data);            
         }
     }
 }
