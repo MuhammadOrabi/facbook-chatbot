@@ -21,20 +21,24 @@ class ReplyHelper
     {
         $elements = [];
         foreach ($data as $item) {
-            $elm = [
+            $elements[] = [
                 "title" => $item['title'], 
                 "item_url" => 'https://www.qarenhom.com/en/' . $item['title'], 
                 "image_url" => "https://www.cloudways.com/blog/wp-content/uploads/Migrating-Your-Symfony-Website-To-Cloudways-Banner.jpg",         
-                "subtitle" => "Choose carefully",             
+                "subtitle" => "Choose carefully",
+                "buttons" => [
+                    [
+                        "type" => "web_url", 
+                        "url" => "https://www.qarenhom.com/en/" . $item['title'], 
+                        "title" => "View Website"
+                    ], 
+                    [
+                        "type" => "postback", 
+                        "title" => $item['title'], 
+                        "payload" => $item['title']
+                    ]
+                ]
             ];
-            foreach ($item['sections'] as $section) {
-                $elm['buttons'][] = [
-                    "type" => "web_url", 
-                    "url" => 'https://www.qarenhom.com/en/' . $section['title'] . '/' . $section['title'], 
-                    "title" => $section['title']
-                ];
-            }
-            $elements[] = $elm;
         }
         return $elements; 
     }
