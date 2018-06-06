@@ -53,7 +53,7 @@ Route::get('/', function () {
                 ],
             ]);
 
-            dd(\App\Helpers\Chatbot\ReplyHelper::handle('generic', $data));
+            dd(\App\Helpers\Chatbot\ReplyHelper::handle('generic', $data),\App\Helpers\Chatbot\ReplyHelper::handle('generics', $data));
         
     return view('welcome');
 });

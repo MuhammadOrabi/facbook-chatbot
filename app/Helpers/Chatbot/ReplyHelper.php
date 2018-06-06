@@ -20,13 +20,14 @@ class ReplyHelper
     public static function genericElements($data)
     {
         $elements = [];
-        foreach ($data->toArray() as $item) {
+        foreach ($data as $item) {
             $elm = [
                 "title" => $item['title'], 
                 "item_url" => 'https://www.qarenhom.com/en/' . $item['title'], 
                 "image_url" => "https://www.cloudways.com/blog/wp-content/uploads/Migrating-Your-Symfony-Website-To-Cloudways-Banner.jpg",         
+                "subtitle" => "Choose carefully",             
             ];
-            foreach ($item['sections']->toArray() as $section) {
+            foreach ($item['sections'] as $section) {
                 $elm['buttons'][] = [
                     "type" => "web_url", 
                     "url" => 'https://www.qarenhom.com/en/' . $section['title'] . '/' . $section['title'], 
