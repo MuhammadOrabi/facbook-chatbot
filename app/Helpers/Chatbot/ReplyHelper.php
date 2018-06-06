@@ -39,7 +39,7 @@ class ReplyHelper
         return $elements; 
     }
 
-    public static function generics($data)
+    public static function generic($data)
     {
         $elements = self::genericElements($data);
           return [
@@ -53,7 +53,7 @@ class ReplyHelper
         ];
     }
 
-    public static function generic($data)
+    public static function generics($data)
     {
         return [
             "attachment" => [
