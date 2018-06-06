@@ -60,19 +60,19 @@ class ReplyHelper
     public static function listElements($data)
     {
         $elements = [];
-        foreach ($data->toArray() as $item) {
+        foreach ($data->sections->toArray() as $item) {
             $elements[] = [
-            "title"=>"Migrate symfony from cpanel",
-            "item_url"=>"https://www.cloudways.com/blog/migrate-symfony-from-cpanel-to-cloud-hosting/",
-            "image_url"=>"https://www.cloudways.com/blog/wp-content/uploads/Migrating-Your-Symfony-Website-To-Cloudways-Banner.jpg",
-            "subtitle"=>"We've got the right hat for everyone.",
-            "buttons"=>[
-              [
-                "type"=>"web_url",
-                "url"=>"https://cloudways.com",
-                "title"=>"View Website"
-              ],
-            ]
+                "title"=>$section['title'],
+                "item_url"=>"https://www.qarenhom.com/en/banking/credit-card",
+                "image_url"=>"",
+                "subtitle"=>"",
+                "buttons"=>[
+                    [
+                        "type"=>"web_url",
+                        "url"=>"https://cloudways.com",
+                        "title"=>"View Website"
+                    ],
+                ]
           ];
         }
         return $elements;
