@@ -84,4 +84,38 @@ class ReplyHelper
             ]
         ];
     }
+
+    public static function listElements($data)
+    {
+        $elements = [];
+        foreach ($data as $item) {
+            $elements[] = [
+            "title"=>"Migrate symfony from cpanel",
+            "item_url"=>"https://www.cloudways.com/blog/migrate-symfony-from-cpanel-to-cloud-hosting/",
+            "image_url"=>"https://www.cloudways.com/blog/wp-content/uploads/Migrating-Your-Symfony-Website-To-Cloudways-Banner.jpg",
+            "subtitle"=>"We've got the right hat for everyone.",
+            "buttons"=>[
+              [
+                "type"=>"web_url",
+                "url"=>"https://cloudways.com",
+                "title"=>"View Website"
+              ],
+            ]
+            ];
+        }
+    }
+
+    public static function list($data)
+    {
+        $elements = self::listElements($data);
+        return [
+            "attachment" => [
+                "type" => "template", 
+                "payload" => [
+                    "template_type" => "list",
+                    "elements" => $elements
+                ]
+            ]
+        ];
+    }
 }
