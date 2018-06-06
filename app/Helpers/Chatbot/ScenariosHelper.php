@@ -6,7 +6,7 @@ class ScenariosHelper
 {
     public static function handle($message)
     {
-        $data = [
+        $data = collect([
                     collect([
                         'id' => 1, 'title' => 'banking', 
                         'sections' => collect([
@@ -43,7 +43,7 @@ class ScenariosHelper
                             ['id' => 5, 'title' => 'study-abroad'],
                         ])
                     ]),
-                ];
+                ]);
         if (strpos($message, 'list') !== false) {
             return ReplyHelper::handle('list', $data);
         } else if (strpos($message, 'text') !== false) {
