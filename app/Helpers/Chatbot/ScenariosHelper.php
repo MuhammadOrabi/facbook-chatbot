@@ -6,7 +6,7 @@ class ScenariosHelper
 {
     public static function handle($message)
     {
-        if (strpos($message, 'hello') !== false) {
+        if (strpos($message, 'hey') !== false) {
             // return ReplyHelper::text('Hey, wanna look for new deals?');
             $data = collect([
                 [
