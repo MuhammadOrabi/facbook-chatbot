@@ -20,7 +20,7 @@ class ChatBotController extends Controller
         }
     }
 
-    public function posts(Request $request)
+    public function post(Request $request)
     {
         $messaging_events = $request->all()['entry'][0]['messaging'];
         foreach ($messaging_events as $event) {
@@ -49,7 +49,7 @@ class ChatBotController extends Controller
         return response(200);
     }
 
-    public function post(Request $request)
+    public function posts(Request $request)
     {
         $messaging_events = $request->all()['entry'][0]['messaging'];
         foreach ($messaging_events as $event) {
